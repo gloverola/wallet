@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Svg, Path} from 'react-native-svg';
-import {theme} from '../components';
+import {theme} from '../../components';
 
 export default ({width, height}) => {
   return (
