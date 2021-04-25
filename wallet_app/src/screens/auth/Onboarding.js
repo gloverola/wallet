@@ -14,24 +14,31 @@ import Paginator from '../../components/Paginator';
 const slides = [
   {
     id: '1',
-    title: 'Accurate CGPA calculator',
-    description: 'Keep tab on your school progress by calculating your CGPA',
-    image: require('../assets/images/calc.png'),
+    title: 'Your Financial Manager',
+    description:
+      'Managing your funds should be the easiest task on your to-do list, so we created wallets just for you',
+    image: require('../../assets/images/pie.png'),
   },
 
   {
     id: '2',
-    title: 'Quick and easy to use',
-    description: "It's quick, flexible and easy to use",
-    image: require('../assets/images/progress.png'),
+    title: 'Borderless Transactios',
+    description: 'Send money to any part of the world',
+    image: require('../../assets/images/card.png'),
   },
 
   {
     id: '3',
-    title: 'Secured and Personal',
-    description:
-      'With a one time login pin, have controll over who can access your points',
-    image: require('../assets/images/secure.png'),
+    title: 'Total Control Over Your Money',
+    description: 'Always know what is going on with your money',
+    image: require('../../assets/images/control.png'),
+  },
+
+  {
+    id: '4',
+    title: 'Account Protection',
+    description: 'Your money is always safe with us',
+    image: require('../../assets/images/protect.png'),
   },
 ];
 
