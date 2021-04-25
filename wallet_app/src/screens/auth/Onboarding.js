@@ -7,8 +7,10 @@ import {
   TouchableOpacity,
   Text,
 } from 'react-native';
+import Button from '../../components/Button';
 import OnboardingItem from '../../components/OnboardingItem';
 import Paginator from '../../components/Paginator';
+import {COLORS} from '../../components/theme';
 
 // slide items
 const slides = [
@@ -44,6 +46,7 @@ const slides = [
 
 const Onboarding = ({navigation}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const {navigate} = navigation;
 
   const scrollX = useRef(new Animated.Value(0)).current;
 
@@ -78,9 +81,16 @@ const Onboarding = ({navigation}) => {
       </View>
       <Paginator data={slides} scrollX={scrollX} />
       <View style={styles.cta}>
-        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-          <Text style={styles.ctaTxt}>Get started</Text>
-        </TouchableOpacity>
+        <Button
+          text="Get started"
+          style={{backgroundColor: COLORS.black, marginBottom: 10}}
+          onPress={() => navigate('Register')}
+        />
+        <Button
+          text="Login"
+          style={{backgroundColor: COLORS.blue, marginBottom: 10}}
+          onPress={() => navigate('Login')}
+        />
       </View>
     </View>
   );
@@ -93,19 +103,10 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: COLORS.white,
   },
   cta: {
-    marginBottom: 80,
-    backgroundColor: '#6C63FF',
+    marginBottom: 40,
     width: '90%',
-    borderRadius: 5,
-  },
-  ctaTxt: {
-    padding: 15,
-    fontSize: 18,
-    textAlign: 'center',
-    color: '#fff',
-    fontWeight: '600',
   },
 });

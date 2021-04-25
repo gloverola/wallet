@@ -1,5 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View, Image, useWindowDimensions} from 'react-native';
+import {COLORS} from './theme';
 
 const OnboardingItem = ({item}) => {
   const {width} = useWindowDimensions();
@@ -38,7 +39,7 @@ const styles = StyleSheet.create({
     fontSize: 28,
     marginBottom: 10,
     textAlign: 'center',
-    color: '#6C63FF',
+    color: COLORS.black,
   },
 
   desc: {
