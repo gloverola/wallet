@@ -41,7 +41,7 @@ const Dashboard = () => {
           </View>
         </View>
 
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
           {/* layer two */}
           <View style={styles.layer2}>
             <View style={styles.row}>
@@ -88,12 +88,22 @@ const Dashboard = () => {
           </View>
 
           {/* Layer 3 */}
-          <View style={styles.layer3}>
+          <TouchableOpacity style={styles.layer3}>
             <Image
               source={require('../../assets/Icons/plus.png')}
               style={styles.plusIcon}
             />
-            <Text>Tap here to create your dollar card now.</Text>
+            <Text style={styles.dollarTxt}>
+              Tap here to create your dollar card now.
+            </Text>
+          </TouchableOpacity>
+
+          {/* Layer four */}
+          <View style={styles.layer4}>
+            <Text style={styles.giftTxt}>
+              Send a reedemable gift card to family & friends anywhere in the
+              world.
+            </Text>
           </View>
         </ScrollView>
       </View>
@@ -110,7 +120,8 @@ const styles = ScaledSheet.create({
   },
   main: {
     flex: 1,
-    padding: '20@ms',
+    paddingHorizontal: '20@ms',
+    paddingTop: '20@ms',
   },
   notifView: {
     flexDirection: 'row',
@@ -170,7 +181,7 @@ const styles = ScaledSheet.create({
   },
   layer2: {
     width: '100%',
-    marginVertical: '20@ms',
+    marginTop: '20@ms',
   },
   row: {
     flexDirection: 'row',
@@ -200,5 +211,32 @@ const styles = ScaledSheet.create({
     fontSize: 12,
     marginTop: '15@ms',
     color: COLORS.black,
+  },
+  layer3: {
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: COLORS.yellow,
+    padding: '20@ms',
+  },
+  plusIcon: {
+    width: '25@ms',
+    height: '25@ms',
+  },
+  dollarTxt: {
+    color: COLORS.black,
+  },
+  layer4: {
+    width: '100%',
+    paddingHorizontal: '20@ms',
+    paddingVertical: '40@vs',
+    backgroundColor: COLORS.blue,
+    marginVertical: '20@ms',
+    borderRadius: '8@ms',
+  },
+  giftTxt: {
+    color: COLORS.white,
+    fontSize: '18@ms',
+    fontWeight: '600',
   },
 });

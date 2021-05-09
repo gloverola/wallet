@@ -6,4 +6,6 @@ export const COLORS = {
   blue_100: '#E6EFFE',
   blue_50: '#F4F5FA',
   grey: '#abadac',
+  pink: '#F7D9F7',
+  yellow: '#FEF6E9',
 };
