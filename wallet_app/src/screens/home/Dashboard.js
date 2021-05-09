@@ -1,14 +1,27 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, SafeAreaView} from 'react-native';
+import {ScaledSheet} from 'react-native-size-matters';
+import {COLORS} from '../../components/theme';
 
 const Dashboard = () => {
   return (
-    <View>
-      <Text>Dashboard</Text>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.main}>
+        <Text>Dashboard</Text>
+      </View>
+    </SafeAreaView>
   );
 };
 
 export default Dashboard;
 
-const styles = StyleSheet.create({});
+const styles = ScaledSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: COLORS.white,
+  },
+  main: {
+    flex: 1,
+    padding: '20@ms',
+  },
+});

@@ -1,12 +1,6 @@
 import React, {useState} from 'react';
 import {ScaledSheet} from 'react-native-size-matters';
-import {
-  StyleSheet,
-  Text,
-  View,
-  SafeAreaView,
-  ActivityIndicator,
-} from 'react-native';
+import {Text, View, SafeAreaView, ActivityIndicator} from 'react-native';
 import {COLORS} from '../../components/theme';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
