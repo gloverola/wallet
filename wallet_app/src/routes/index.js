@@ -3,6 +3,7 @@ import {NavigationContainer, DefaultTheme} from '@react-navigation/native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import HomeRoute from './home';
 import AuthRoute from './auth';
+import {useDispatch, useSelector} from 'react-redux';
 
 const theme = {
   ...DefaultTheme,
@@ -13,10 +14,11 @@ const theme = {
 };
 
 const AppNavContainer = () => {
+  const {isAuthenticated} = useSelector(state => state.auth);
   return (
     <SafeAreaProvider>
       <NavigationContainer theme={theme}>
-        <AuthRoute />
+        {isAuthenticated ? <HomeRoute /> : <AuthRoute />}
       </NavigationContainer>
     </SafeAreaProvider>
   );

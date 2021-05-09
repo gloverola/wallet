@@ -10,7 +10,7 @@ const HomeRoute = () => {
       screenOptions={{
         headerShown: false,
       }}>
-      <Stack.Screen name="Login" component={Dashboard} />
+      <Stack.Screen name="Home" component={Dashboard} />
     </Stack.Navigator>
   );
 };

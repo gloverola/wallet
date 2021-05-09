@@ -1,4 +1,4 @@
 {
-  "mongoURI": "mongodb+srv://dbglover:glover221096@cluster0.whtna.mongodb.net/wallet-app?retryWrites=true&w=majority",
+  "mongoURI": "mongodb+srv://dbglover:glover@cluster0.whtna.mongodb.net/wallet-app?retryWrites=true&w=majority",
   "secret": "wallet_secret"
 }

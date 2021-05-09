@@ -4,16 +4,18 @@ import {StyleSheet, Text, View, SafeAreaView} from 'react-native';
 import {COLORS} from '../../components/theme';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
+import {register} from '../../store/actions/authActions';
+import {useDispatch} from 'react-redux';
 
 const CreateAccount = () => {
   const [form, setForm] = useState({});
+  const dispatch = useDispatch();
 
   const handleChange = ({name, value}) => {
     setForm({...form, [name]: value});
   };
-
   const handleSubmit = () => {
-    console.log('form_@register>>>', form);
+    dispatch(register(form));
   };
 
   return (
@@ -45,6 +47,7 @@ const CreateAccount = () => {
           <Text>Password</Text>
           <Input
             placeholder="Password"
+            secureTextEntry
             onChangeText={value => handleChange({name: 'password', value})}
           />
         </View>
