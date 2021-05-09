@@ -2,17 +2,10 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {COLORS} from '../components/theme';
 import {Image} from 'react-native';
-
-import Home from '../screens/Home';
-import Search from '../screens/Search';
-import Notifications from '../screens/Notifications';
-import Profile from '../screens/Profile';
-import {
-  HOME_SCREEN,
-  NOTIFICATION_SCREEN,
-  PROFILE_SCREEN,
-  SEARCH_SCREEN,
-} from '../constants/routeNames';
+import Dashboard from '../screens/home/Dashboard';
+import Cards from '../screens/home/Cards';
+import Transactions from '../screens/home/Transactions';
+import More from '../screens/home/More';
 
 const Tab = createBottomTabNavigator();
 
@@ -21,8 +14,7 @@ const tabOptions = {
   style: {
     backgroundColor: COLORS.white,
     height: '10%',
-    borderTopWidth: 1,
-    borderTopColor: COLORS.grey_200,
+    borderTopWidth: 0,
     paddingVertical: '1%',
     alignItems: 'center',
     justifyContent: 'center',
@@ -32,7 +24,7 @@ const tabOptions = {
     marginBottom: '2%',
     padding: 0,
   },
-  activeTintColor: COLORS.primary,
+  activeTintColor: COLORS.blue,
 };
 
 const BottomTab = () => {
@@ -41,13 +33,13 @@ const BottomTab = () => {
       tabBarOptions={tabOptions}
       screenOptions={({route}) => ({
         tabBarIcon: ({focused}) => {
-          const tintColor = focused ? COLORS.primary : COLORS.grey_300;
+          const tintColor = focused ? COLORS.blue : '#c6c6c6';
 
           switch (route.name) {
-            case 'Home':
+            case 'Dashboard':
               return (
                 <Image
-                  source={require('../assets/home-icon.png')}
+                  source={require('../assets/Icons/home.png')}
                   resizeMode="contain"
                   style={{
                     tintColor: tintColor,
@@ -58,10 +50,10 @@ const BottomTab = () => {
                 />
               );
 
-            case 'Search':
+            case 'Cards':
               return (
                 <Image
-                  source={require('../assets/search-icon.png')}
+                  source={require('../assets/Icons/credit-card.png')}
                   resizeMode="contain"
                   style={{
                     tintColor: tintColor,
@@ -71,10 +63,10 @@ const BottomTab = () => {
                 />
               );
 
-            case 'Notification':
+            case 'Transactions':
               return (
                 <Image
-                  source={require('../assets/bell-icon.png')}
+                  source={require('../assets/Icons/transaction.png')}
                   resizeMode="contain"
                   style={{
                     tintColor: tintColor,
@@ -84,10 +76,10 @@ const BottomTab = () => {
                 />
               );
 
-            case 'Profile':
+            case 'More':
               return (
                 <Image
-                  source={require('../assets/profile-grey-icon.png')}
+                  source={require('../assets/Icons/right-menu-bars.png')}
                   resizeMode="contain"
                   style={{
                     tintColor: tintColor,
@@ -99,10 +91,10 @@ const BottomTab = () => {
           }
         },
       })}>
-      <Tab.Screen name={HOME_SCREEN} component={Home} />
-      <Tab.Screen name={SEARCH_SCREEN} component={Search} />
-      <Tab.Screen name={NOTIFICATION_SCREEN} component={Notifications} />
-      <Tab.Screen name={PROFILE_SCREEN} component={Profile} />
+      <Tab.Screen name="Dashboard" component={Dashboard} />
+      <Tab.Screen name="Cards" component={Cards} />
+      <Tab.Screen name="Transactions" component={Transactions} />
+      <Tab.Screen name="More" component={More} />
     </Tab.Navigator>
   );
 };
