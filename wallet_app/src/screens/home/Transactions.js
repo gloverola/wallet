@@ -71,13 +71,15 @@ const transactions = [
 const Transactions = () => {
   const renderList = ({item}) => {
     return (
-      <View style={styles.list}>
+      <TouchableOpacity style={styles.list}>
         <View style={styles.col1}>
           <Text style={styles.name}>{item.name}</Text>
           <Text style={styles.date}>{item.date}</Text>
         </View>
-        <Text style={styles.amount}>{item.amount}</Text>
-      </View>
+        <Text style={item.type === 'send' ? styles.send : styles.recieve}>
+          {item.type === 'send' ? `- ${item.amount}` : `+ ${item.amount}`}
+        </Text>
+      </TouchableOpacity>
     );
   };
 
@@ -198,5 +200,23 @@ const styles = ScaledSheet.create({
     marginBottom: '10@vs',
     borderRadius: '4@ms',
     padding: '10@ms',
+  },
+  name: {
+    fontSize: '18@ms',
+    fontWeight: '500',
+  },
+  date: {
+    fontSize: '10@ms',
+    color: COLORS.grey,
+  },
+  send: {
+    color: COLORS.red,
+    fontSize: '16@ms',
+    fontWeight: '600',
+  },
+  recieve: {
+    color: COLORS.green,
+    fontSize: '16@ms',
+    fontWeight: '600',
   },
 });
