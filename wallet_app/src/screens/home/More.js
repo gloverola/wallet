@@ -7,7 +7,7 @@ const More = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.main}>
-        <Text style={styles.headerTxt}>New Card</Text>
+        <Text style={styles.headerTxt}>More things you can do</Text>
       </View>
     </SafeAreaView>
   );
@@ -26,8 +26,8 @@ const styles = ScaledSheet.create({
     paddingTop: '20@ms',
   },
   headerTxt: {
-    textAlign: 'right',
-    fontSize: '16@ms',
+    fontSize: '18@ms',
     fontWeight: '600',
+    marginBottom: '20@vs',
   },
 });
