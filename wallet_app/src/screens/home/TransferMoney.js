@@ -15,6 +15,7 @@ import Button from '../../components/Button';
 import {login} from '../../store/actions/authActions';
 import {useDispatch, useSelector} from 'react-redux';
 import back from '../../assets/Icons/left-arrow.png';
+import {send} from '../../store/actions/transactionAction';
 
 const TransferMoney = ({navigation, route}) => {
   const {amount} = route.params;
@@ -22,7 +23,15 @@ const TransferMoney = ({navigation, route}) => {
   const [description, setDescription] = useState('');
   const [account, setAccount] = useState('');
 
-  const handleSend = () => {};
+  const handleSend = () => {
+    const data = {
+      amount: +amount,
+      description,
+      account: +account,
+    };
+
+    dispatch(send(data));
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -35,6 +44,20 @@ const TransferMoney = ({navigation, route}) => {
           </TouchableOpacity>
           <Text style={styles.headerTxt}>Send Money</Text>
         </View>
+        <Text style={styles.detials}>Recipient's details</Text>
+        <TextInput
+          style={styles.input}
+          value={account}
+          keyboardType="numeric"
+          placeholder="Account Number"
+          onChangeText={text => setAccount(text)}
+        />
+        <TextInput
+          style={styles.input}
+          value={description}
+          placeholder="Description"
+          onChangeText={text => setDescription(text)}
+        />
         <View style={styles.cta}>
           <Button
             text="Send Money"
@@ -84,5 +107,16 @@ const styles = ScaledSheet.create({
   cta: {
     marginTop: '40@vs',
     width: '100%',
+  },
+  detials: {
+    fontSize: '18@ms',
+    fontWeight: '500',
+    marginBottom: '30@vs',
+  },
+  input: {
+    paddingTop: '5@ms',
+    borderBottomWidth: 1,
+    marginBottom: '30@vs',
+    borderBottomColor: COLORS.grey,
   },
 });
