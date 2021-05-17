@@ -10,7 +10,7 @@ import {
 import {ScaledSheet} from 'react-native-size-matters';
 import {COLORS} from '../../components/theme';
 
-const Dashboard = () => {
+const Dashboard = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.main}>
@@ -54,7 +54,10 @@ const Dashboard = () => {
                 </View>
                 <Text style={styles.boxTxt}>Request Money</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.box}>
+              <TouchableOpacity
+                style={styles.box}
+                activeOpacity={0.7}
+                onPress={() => navigation.navigate('SendMoney')}>
                 <View style={styles.circle1}>
                   <Image
                     source={require('../../assets/Icons/money-bag.png')}

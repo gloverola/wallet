@@ -7,8 +7,11 @@ import invite from '../../assets/Icons/invitation.png';
 import qrCode from '../../assets/Icons/qr-code.png';
 import whatsapp from '../../assets/Icons/whatsapp.png';
 import telephone from '../../assets/Icons/telephone.png';
+import {useSelector} from 'react-redux';
 
 const More = () => {
+  const {account_number} = useSelector(state => state.auth);
+  console.log(account_number);
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.main}>
@@ -18,7 +21,7 @@ const More = () => {
           <View style={styles.box}>
             <Text style={styles.account}>
               Wallet Account Number:{' '}
-              <Text style={styles.accountNum}>847489938472</Text>
+              <Text style={styles.accountNum}>{account_number}</Text>
             </Text>
             <Text style={styles.account}>
               Bank Name: <Text style={styles.accountNum}>Wallet Bank PLC</Text>

@@ -77,7 +77,9 @@ const Transactions = () => {
           <Text style={styles.date}>{item.date}</Text>
         </View>
         <Text style={item.type === 'send' ? styles.send : styles.recieve}>
-          {item.type === 'send' ? `- ${item.amount}` : `+ ${item.amount}`}
+          {item.type === 'send'
+            ? `- ${'\u20A6'}${item.amount}`
+            : `${'\u20A6'}${item.amount}`}
         </Text>
       </TouchableOpacity>
     );
@@ -101,7 +103,7 @@ const Transactions = () => {
         {/* Add Money View */}
         <View style={styles.addMoneyView}>
           <View style={styles.layer1}>
-            <Text style={styles.balance}>N 1400.00</Text>
+            <Text style={styles.balance}>{'\u20A6'}1400.00</Text>
             <View style={styles.currency}>
               <Text style={styles.currTxt}>NGN</Text>
             </View>
