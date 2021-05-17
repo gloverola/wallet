@@ -16,15 +16,13 @@ import {login} from '../../store/actions/authActions';
 import {useDispatch, useSelector} from 'react-redux';
 import back from '../../assets/Icons/left-arrow.png';
 
-const SendMoney = ({navigation}) => {
+const TransferMoney = ({navigation, route}) => {
+  const {amount} = route.params;
   const dispatch = useDispatch();
-  const [amount, setAmount] = useState('0.00');
+  const [description, setDescription] = useState('');
+  const [account, setAccount] = useState('');
 
-  const handleSend = () => {
-    if (amount >= 100) {
-      navigation.navigate('TransferMoney', {amount});
-    } else return;
-  };
+  const handleSend = () => {};
 
   return (
     <SafeAreaView style={styles.container}>
@@ -35,23 +33,11 @@ const SendMoney = ({navigation}) => {
             onPress={() => navigation.goBack()}>
             <Image source={back} style={styles.backIcon} />
           </TouchableOpacity>
-          <Text style={styles.headerTxt}>Bank Transfer</Text>
-        </View>
-        <View style={styles.box}>
-          <View style={styles.amountView}>
-            <Text style={styles.send}>Amount to send</Text>
-            <TextInput
-              style={styles.amount}
-              value={amount}
-              keyboardType="numeric"
-              onChangeText={text => setAmount(text)}
-            />
-          </View>
-          <Text style={styles.naira}>{'\u20A6'}</Text>
+          <Text style={styles.headerTxt}>Send Money</Text>
         </View>
         <View style={styles.cta}>
           <Button
-            text="Continue"
+            text="Send Money"
             style={{backgroundColor: COLORS.blue, marginBottom: 10}}
             onPress={handleSend}
           />
@@ -61,7 +47,7 @@ const SendMoney = ({navigation}) => {
   );
 };
 
-export default SendMoney;
+export default TransferMoney;
 
 const styles = ScaledSheet.create({
   container: {
@@ -93,27 +79,6 @@ const styles = ScaledSheet.create({
   headerTxt: {
     textAlign: 'center',
     fontSize: '16@ms',
-    fontWeight: '600',
-  },
-  box: {
-    backgroundColor: COLORS.white,
-    padding: '15@ms',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    borderRadius: '4@ms',
-  },
-  send: {
-    fontSize: '10@ms',
-    fontWeight: '500',
-    marginBottom: '10@vs',
-  },
-  amount: {
-    fontSize: '16@ms',
-    fontWeight: '600',
-  },
-  naira: {
-    fontSize: '20@ms',
     fontWeight: '600',
   },
   cta: {
