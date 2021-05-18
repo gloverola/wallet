@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import {
   StyleSheet,
   View,
@@ -57,6 +57,22 @@ const Onboarding = ({navigation}) => {
   }).current;
 
   const viewConfig = useRef({viewAreaCoveragePercentThreshold: 50}).current;
+
+  const autoScroll = () => {
+    if (currentIndex < slides.length - 1) {
+      slidesRef.current.scrollToIndex({index: currentIndex + 1});
+    } else {
+      slidesRef.current.scrollToIndex({index: 0});
+    }
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      autoScroll();
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, [currentIndex]);
 
   return (
     <View style={styles.container}>

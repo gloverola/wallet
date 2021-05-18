@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   Text,
   View,
@@ -9,8 +9,15 @@ import {
 } from 'react-native';
 import {ScaledSheet} from 'react-native-size-matters';
 import {COLORS} from '../../components/theme';
+import {socket, roomID, receiver} from '../../store/actions/transactionAction';
+import {useDispatch} from 'react-redux';
 
 const Dashboard = ({navigation}) => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    socket.emit('joinService', {roomID});
+    dispatch(receiver());
+  }, []);
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.main}>
