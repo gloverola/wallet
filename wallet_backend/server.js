@@ -25,7 +25,6 @@ if (process.env.NODE_ENV === "development") {
 }
 //Database Configuaration
 const db = config.get("mongoURI");
-console.log(db);
 mongoose
   .connect(db, {
     useNewUrlParser: true,
@@ -39,6 +38,9 @@ mongoose
 app.get("/", (req, res) => res.send("home page"));
 app.use("/api/users", require("./routes/api/users"));
 app.use("/api/auth", require("./routes/api/auth"));
+
+// Web Socket
+require("./middleware/socket")(app, io, db);
 
 const port = process.env.PORT || 5000;
 server.listen(port, () => console.log(`Server running on port ${port}`));
